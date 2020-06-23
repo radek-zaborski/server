@@ -1,6 +1,6 @@
 {
-    "main": "server.js",
-    "scripts": {
+  "main": "server.js",
+  "scripts": {
     "start": "nodemon server.js",
     "build": "cd client && yarn install && yarn build"
   },
@@ -9,6 +9,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
   }
 }

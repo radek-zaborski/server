@@ -20,7 +20,9 @@ router.route('/seats').post((req, res) => {
     const { day, seat, client, email } = req.body;
     const id = generatorId(Math.floor(Math.random() * 9 + 1));
     db.seats.push({ id, day, seat, client, email });
+    req.io.emit('seatsUpdated', db.seats);
     res.json({ message: 'OK' });
+
 });
 
 router.route('/seats/:id').put((req, res) => {

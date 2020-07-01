@@ -31,7 +31,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
 });
 
-mongoose.connect('mongodb+srv://kodilla:<password>@cluster0.hywcm.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://kodilla:<kodillas>@cluster0.hywcm.gcp.mongodb.net/<NewWaveDB>?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {

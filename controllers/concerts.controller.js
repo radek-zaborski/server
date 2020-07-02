@@ -38,7 +38,7 @@ exports.newConcert = async (req, res) => {
              image: image,  
         });
 
-        newConcert.save();
+        await newConcert.save();
         res.json({message: newConcert});
     }
     catch(err){

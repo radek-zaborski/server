@@ -37,7 +37,7 @@ exports.newSeat = async (req, res) => {
              email: email,
         });
 
-        newSeat.save();
+        await newSeat.save();
         res.json({message: newSeat});
     }
     catch(err){
@@ -68,7 +68,7 @@ exports.update = async (req, res) => {
         if(!findSeat) res.status(404).json({message: 'Not found ' + req.params.id});
 
         else {
-             await findSeat.updateOne({ $set: { 
+            await findSeat.updateOne({ $set: { 
                 day: day,
                 seat: seat,
                 client: client,

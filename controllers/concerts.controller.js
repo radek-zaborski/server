@@ -1,5 +1,5 @@
 const Concert = require('../models/concerts.model');
-
+const sanitize = require('mongo-sanitize');
 exports.findAll = async (req, res) => {
     
     try {
@@ -27,7 +27,8 @@ exports.random = async (req, res) =>{
 
 exports.newConcert = async (req, res) => {
 
-    const { performer, genre, price, day, image} = req.body;
+    const secureBody = sanitize(req.body)
+    const { performer, genre, price, day, image} = secureBody;
 
     try {
         const newConcert = new Concert({

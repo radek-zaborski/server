@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const app = express();
 
 const testimonialsRoutes = require('./routes/testimonials.routes');
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/', testimonialsRoutes);
 app.use('/api/', concertsRoutes);
 app.use('/api/', seatsRoutes);
+app.use(helmet());
 
 app.use(express.static(path.join(__dirname + '/client/build')));
 

@@ -3,8 +3,10 @@
   "scripts": {
     "start": "nodemon server.js",
     "build": "cd client && yarn install && yarn build",
-    "test": "set NODE_ENV=production && mocha \"./{,!(node_modules)/**/}*.test.js\"",
-    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
+    "test": "snyk test && set NODE_ENV=production && mocha \"./{,!(node_modules)/**/}*.test.js\"",
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@radex171/randomid-generator": "^1.0.1",
@@ -13,10 +15,14 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mocha": "7.2.0",
+    "mongo-sanitize": "1.0.1",
     "mongoose": "^5.9.20",
     "nodemon": "^2.0.4",
     "onchange": "^7.0.2",
     "path": "^0.12.7",
-    "socket.io": "^2.3.0"
-  }
+    "socket.io": "^2.3.0",
+    "snyk": "^1.360.0"
+  },
+  "devDependencies": {},
+  "snyk": true
 }

@@ -31,7 +31,8 @@ const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
 });
 
-mongoose.connect('mongodb+srv://kodilla:kodillas@cluster0.hywcm.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+const dbURI = process.env.NODE_ENV === 'production' ? 'mongodb+srv://kodilla:kodillas@cluster0.hywcm.gcp.mongodb.net/NewWaveDB?retryWrites=true&w=majority' : 'mongodb://localhost:27017/NewWaveDB';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -44,3 +45,5 @@ const io = socket(server);
 io.on('connection', (socket) => {
   console.log('New socket!');
 });
+
+module.exports = server;
